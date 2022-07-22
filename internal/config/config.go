@@ -21,6 +21,7 @@ type Conf struct {
 	AuthorizedKeysCheckInterval time.Duration
 	CustomSSHDPort              int
 	CustomSSHDCfgFile           string
+	CustomHostKeyFiles          []string
 }
 
 // Init initializes the agent's configuration
@@ -32,6 +33,7 @@ func Init() *Conf {
 		DebugMode:                   cliArgs.debugMode,
 		CustomSSHDPort:              cliArgs.sshdPort,
 		CustomSSHDCfgFile:           cliArgs.sshdCfgFile,
+		CustomHostKeyFiles:          cliArgs.hostKeyFiles,
 		AuthorizedKeysCheckInterval: backgroundJobIntervalSeconds * time.Second,
 	}
 }
