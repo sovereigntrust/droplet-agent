@@ -41,6 +41,9 @@ func main() {
 	if cfg.CustomSSHDCfgFile != "" {
 		sshMgrOpts = append(sshMgrOpts, sysaccess.WithCustomSSHDCfg(cfg.CustomSSHDCfgFile))
 	}
+	if len(cfg.CustomHostKeyFiles) != 0 {
+		sshMgrOpts = append(sshMgrOpts, sysaccess.WithCustomHostKeyFiles(cfg.CustomHostKeyFiles))
+	}
 	sshMgr, err := sysaccess.NewSSHManager(sshMgrOpts...)
 	if err != nil {
 		log.Fatal("failed to initialize SSHManager: %v", err)
