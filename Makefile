@@ -21,8 +21,8 @@ touch        = @touch $@
 cp           = @cp $< $@
 print        = @printf "\n:::::::::::::::: [$(shell date -u)] $@ ::::::::::::::::\n"
 now          = $(shell date -u)
-#fpm          = @docker run --platform linux/amd64 --rm -i -v "$(CURDIR):$(CURDIR)" -w "$(CURDIR)" -u $(shell id -u) digitalocean/fpm:latest
-fpm          = @docker run --platform linux/amd64 --rm -i -v "$(CURDIR):$(CURDIR)" -w "$(CURDIR)" -u $(shell id -u) docker.elastic.co/beats-dev/fpm:1.13.1 fpm
+fpm          = @docker run --platform linux/amd64 --rm -i -v "$(CURDIR):$(CURDIR)" -w "$(CURDIR)" -u $(shell id -u) digitalocean/fpm:latest
+#fpm          = @docker run --platform linux/amd64 --rm -i -v "$(CURDIR):$(CURDIR)" -w "$(CURDIR)" -u $(shell id -u) docker.elastic.co/beats-dev/fpm:1.13.1 fpm
 shellcheck   = @docker run --rm -i -v "$(CURDIR):$(CURDIR)" -w "$(CURDIR)" -u $(shell id -u) koalaman/shellcheck:v0.6.0
 version_check = @./scripts/check_version.sh
 linter = docker run --rm -i -v "$(CURDIR):$(CURDIR)" -w "$(CURDIR)" -e "GO111MODULE=on" -e "GOFLAGS=-mod=vendor" -e "XDG_CACHE_HOME=$(CURDIR)/target/.cache/go" \
